@@ -3,9 +3,9 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../../utils/firebase/firebase.utils";
-import FormInput from "../../form-input/form-input.component";
+import FormInput from "../../../components/form-input/form-input.component";
 import "./sign-up-for.styles.scss";
-import Button from "../../button/button.component";
+import Button from "../../../components/button/button.component";
 
 const defaultFormFields = {
   displayName: "",
@@ -42,7 +42,7 @@ const SignUpForm = () => {
     }
     return;
   };
-
+  console.log(formFields);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>
-      <span>Sign Up with Your Email</span>
+      <span>Sign Up with Your Email and Password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
@@ -62,7 +62,7 @@ const SignUpForm = () => {
             required: true,
             onChange: handleChange,
             value: displayName,
-            name: "diplayName",
+            name: "displayName",
           }}
         />
         <FormInput
