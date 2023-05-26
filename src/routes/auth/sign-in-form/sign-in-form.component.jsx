@@ -4,7 +4,9 @@ import {
   signInWithGooglePopup,
 } from "../../../utils/firebase/firebase.utils";
 import FormInput from "../../../components/form-input/form-input.component";
-import Button from "../../../components/button/button.component";
+import Button, {
+  BUTTON_TYPES_CLASSES,
+} from "../../../components/button/button.component";
 import "./sign-in-for.styles.scss";
 
 const defaultFormFields = {
@@ -24,10 +26,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      await signInAuthUserWithEmailAndPasswrod(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPasswrod(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -79,7 +78,11 @@ const SignInForm = () => {
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" onClick={signInWithGoogle} buttonType="google">
+          <Button
+            type="button"
+            onClick={signInWithGoogle}
+            buttonType={BUTTON_TYPES_CLASSES.google}
+          >
             Google Sign In
           </Button>
         </div>

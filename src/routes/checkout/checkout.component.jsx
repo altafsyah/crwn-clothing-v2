@@ -1,21 +1,27 @@
 import { CartContext } from "../../contexts/cart.context";
 import { useContext } from "react";
-import "./checkout.styles.scss";
+import {
+  CheckoutContainer,
+  CheckoutHeaderContainer,
+  CheckoutHeader,
+  HeaderBlock,
+  Total,
+} from "./checkout.styles";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 const Checkout = () => {
   const { cartItems, totalPrice } = useContext(CartContext);
   return (
-    <table className="checkout-container">
-      <thead className="checkout-header-container">
-        <tr className="checkout-header">
-          <th className="header-block">Product</th>
-          <th className="header-block">Description</th>
-          <th className="header-block">Quantity</th>
-          <th className="header-block">Price</th>
-          <th className="header-block">Remove</th>
-        </tr>
-      </thead>
+    <CheckoutContainer>
+      <CheckoutHeaderContainer>
+        <CheckoutHeader>
+          <HeaderBlock>Product</HeaderBlock>
+          <HeaderBlock>Description</HeaderBlock>
+          <HeaderBlock>Quantity</HeaderBlock>
+          <HeaderBlock>Price</HeaderBlock>
+          <HeaderBlock>Remove</HeaderBlock>
+        </CheckoutHeader>
+      </CheckoutHeaderContainer>
       <hr />
       <tbody
         style={{
@@ -27,11 +33,11 @@ const Checkout = () => {
         })}
         <tr>
           <td>
-            <h1 className="total">Total : ${totalPrice}</h1>
+            <Total>Total : ${totalPrice}</Total>
           </td>
         </tr>
       </tbody>
-    </table>
+    </CheckoutContainer>
   );
 };
 

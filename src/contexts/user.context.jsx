@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
       }
       setCurrentUser(user);
     });
-    return unsubcsribe;
+    return;
   }, []);
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
